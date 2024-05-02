@@ -81,7 +81,6 @@ html[data-no-scroll], html[data-no-scroll] body {
 
 .info-button {
   display: inline-block;
-  z-index: 1;
   padding: 0.75em;
   margin: -0.75em;
   position: absolute;
