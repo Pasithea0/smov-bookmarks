@@ -72,7 +72,7 @@ export default defineConfig(({ mode }) => {
           description: "Watch your favorite shows and movies for free with no ads ever! (っ'ヮ'c)",
           theme_color: "#120f1d",
           background_color: "#120f1d",
-          display: "standalone",
+          display: "fullscreen",
           start_url: "/",
           icons: [
             {
