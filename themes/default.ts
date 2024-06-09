@@ -1,86 +1,86 @@
 const tokens = {
-  black: "#000000",
-  white: "#FFFFFF",
+  black: "#000000", // General black color
+  white: "#FFFFFF", // General white color
   semantic: {
     red: {
-      c100: "#F46E6E",
-      c200: "#E44F4F",
-      c300: "#D74747",
-      c400: "#B43434",
+      c100: "#F46E6E", // Error text
+      c200: "#E44F4F", // Video player scraping error
+      c300: "#D74747", // Danger button
+      c400: "#B43434", // Not currently used
     },
     green: {
-      c100: "#60D26A",
-      c200: "#40B44B",
-      c300: "#31A33C",
-      c400: "#237A2B",
+      c100: "#60D26A", // Success text
+      c200: "#40B44B", // Video player scraping success
+      c300: "#31A33C", // Not currently used
+      c400: "#237A2B", // Not currently used
     },
     silver: {
-      c100: "#DEDEDE",
-      c200: "#B6CAD7",
-      c300: "#8EA3B0",
-      c400: "#617A8A",
+      c100: "#DEDEDE", // Primary button hover
+      c200: "#B6CAD7", // Not currently used
+      c300: "#8EA3B0", // Secondary button text
+      c400: "#617A8A", // Main text in video player context
     },
     yellow: {
-      c100: "#FFF599",
-      c200: "#FCEC61",
-      c300: "#D8C947",
-      c400: "#AFA349",
+      c100: "#FFF599", // Best onboarding highlight
+      c200: "#FCEC61", // Dropdown highlight hover
+      c300: "#D8C947", // Not currently used
+      c400: "#AFA349", // Dropdown highlight
     },
     rose: {
-      c100: "#DB3D61",
-      c200: "#8A293B",
-      c300: "#812435",
-      c400: "#701B2B",
+      c100: "#DB3D61", // Authentication error text
+      c200: "#8A293B", // Danger button hover
+      c300: "#812435", // Danger button
+      c400: "#701B2B", // Not currently used
     },
   },
   blue: {
-    c50: "#ADADF5",
-    c100: "#7979CC",
-    c200: "#5D5DAE",
-    c300: "#3B3B8C",
-    c400: "#2A2A71",
-    c500: "#1F1F50",
-    c600: "#1B1B41",
-    c700: "#171736",
-    c800: "#101020",
-    c900: "#0B0B13",
+    c50: "#ADADF5", // Not currently used
+    c100: "#7979CC", // Not currently used
+    c200: "#5D5DAE", // Theme primary color, pill highlight, global accent A
+    c300: "#3B3B8C", // Global accent B
+    c400: "#2A2A71", // Light bar color
+    c500: "#1F1F50", // Background accent B
+    c600: "#1B1B41", // Not currently used
+    c700: "#171736", // Not currently used
+    c800: "#101020", // Not currently used
+    c900: "#0B0B13", // Not currently used
   },
   purple: {
-    c50: "#D5AAFF",
-    c100: "#C082FF",
-    c200: "#A359EC",
-    c300: "#8D44D6",
-    c400: "#7831BF",
-    c500: "#572887",
-    c600: "#411F64",
-    c700: "#31184A",
-    c800: "#221134",
-    c900: "#160B22",
+    c50: "#D5AAFF", // Link hover
+    c100: "#C082FF", // Link, logo text, video player audio set
+    c200: "#A359EC", // Progress filled, video player scraping loading, video player context accent
+    c300: "#8D44D6", // Toggle button, onboarding bar filled
+    c400: "#7831BF", // Large card icon
+    c500: "#572887", // Background accent A
+    c600: "#411F64", // Not currently used
+    c700: "#31184A", // Not currently used
+    c800: "#221134", // Not currently used
+    c900: "#160B22", // Not currently used
   },
   ash: {
-    c50: "#7F8D9B",
-    c100: "#5B6B7B",
-    c200: "#445464",
-    c300: "#2B3D4E",
-    c400: "#203242",
-    c500: "#1C2C3C",
-    c600: "#172532",
-    c700: "#131E29",
-    c800: "#101820",
-    c900: "#0C1216",
+    c50: "#7F8D9B", // Authentication copy text hover, progress background, progress preloaded
+    c100: "#5B6B7B", // Secondary text, badge text, video player scraping no result
+    c200: "#445464", // Media card bar color, video player button background
+    c300: "#2B3D4E", // Cancel button hover, utils divider
+    c400: "#203242", // Card border and background, dropdown border, onboarding bar, edit badge hover, sidebar type
+    c500: "#1C2C3C", // Toggle disabled, cancel button, modal background, search hover background, media card shadow, settings save bar, errors card, about circle, edit badge background, video player button focus, video player flag background, video player input background, video player button over input hover
+    c600: "#172532", // Background secondary, dropdown alt background, dropdown border, onboarding card border
+    c700: "#131E29", // Secondary button, media card badge, onboarding card hover, video player context card border, video player context buttons list, video player close hover
+    c800: "#101820", // Background main, settings sidebar badge, errors border
+    c900: "#0C1216", // Media card hover shadow, settings sidebar active link, video player context background
   },
   shade: {
-    c25: "#5d5db3",
-    c50: "#676790",
-    c100: "#52527A",
-    c200: "#3F3F60",
-    c300: "#32324F",
-    c400: "#272741",
-    c500: "#1E1E32",
-    c600: "#171728",
-    c700: "#131322",
-    c800: "#0F0F1B",
-    c900: "#0A0A12",
+    c25: "#5d5db3", // Media card hover accent
+    c50: "#676790", // Theme secondary color, text, dimmed text
+    c100: "#52527A", // Search placeholder and icon, dropdown secondary text
+    c200: "#3F3F60", // Pill background hover, onboarding divider
+    c300: "#32324F", // Pill background, authentication border, onboarding card
+    c400: "#272741", // Background secondary hover, dropdown border, onboarding bar, onboarding divider
+    c500: "#1E1E32", // Search background, search focus, dropdown hover background, dropdown content background, authentication input background hover, authentication word background
+    c600: "#171728", // Modal background, dropdown background, onboarding card border
+    c700: "#131322", // Dropdown alt background
+    c800: "#0F0F1B", // Background main, settings save bar, onboarding card
+    c900: "#0A0A12", // Media card hover shadow
   },
 };
 
