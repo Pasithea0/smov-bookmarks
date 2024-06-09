@@ -226,7 +226,6 @@ export function Discover() {
     genres.forEach((genre) => fetchMoviesForGenre(genre.id));
   }, [genres]);
 
-  // Update the scrollCarousel function to use the new ref map
   function scrollCarousel(categorySlug: string, direction: string) {
     const carousel = carouselRefs.current[categorySlug];
     if (carousel) {
@@ -237,22 +236,7 @@ export function Discover() {
         const scrollAmount = movieWidth * visibleMovies * 0.69; // Silly number :3
 
         if (direction === "left") {
-          if (carousel.scrollLeft <= 5) {
-            carousel.scrollBy({
-              left: carousel.scrollWidth,
-              behavior: "smooth",
-            }); // Scroll to the end
-          } else {
-            carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-          }
-        } else if (
-          carousel.scrollLeft + carousel.offsetWidth + 5 >=
-          carousel.scrollWidth
-        ) {
-          carousel.scrollBy({
-            left: -carousel.scrollWidth,
-            behavior: "smooth",
-          }); // Scroll to the beginning
+          carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
         } else {
           carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
@@ -284,50 +268,47 @@ export function Discover() {
     }
   }, [movieWidth]);
 
+  const browser = !!window.chrome; // detect chromium browser
   let isScrolling = false;
+
   function handleWheel(e: React.WheelEvent, categorySlug: string) {
     if (isScrolling) {
       return;
     }
 
     isScrolling = true;
-
     const carousel = carouselRefs.current[categorySlug];
-    if (carousel && !e.deltaX) {
+    if (carousel) {
       const movieElements = carousel.getElementsByTagName("a");
       if (movieElements.length > 0) {
-        const posterWidth = movieElements[0].offsetWidth;
-        const visibleMovies = Math.floor(carousel.offsetWidth / posterWidth);
-        const scrollAmount = posterWidth * visibleMovies * 0.62;
         if (e.deltaY < 5) {
-          carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+          scrollCarousel(categorySlug, "left");
         } else {
-          carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+          scrollCarousel(categorySlug, "right");
         }
       }
     }
 
-    setTimeout(() => {
+    if (browser) {
+      setTimeout(() => {
+        isScrolling = false;
+      }, 345); // disable scrolling after 345 milliseconds for chromium-based browsers
+    } else {
+      // immediately reset isScrolling for non-chromium browsers
       isScrolling = false;
-    }, 345); // Disable scrolling every 3 milliseconds after interaction (only for mouse wheel doe)
+    }
   }
 
   const [isHovered, setIsHovered] = useState(false);
+  const toggleHover = (isHovering: boolean) => setIsHovered(isHovering);
 
   useEffect(() => {
-    if (!isHovered) {
+    document.body.style.overflow = isHovered ? "hidden" : "auto";
+
+    return () => {
       document.body.style.overflow = "auto";
-    }
+    };
   }, [isHovered]);
-
-  const handleMouseEnter = () => {
-    document.body.style.overflow = "hidden";
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
 
   function renderMovies(medias: Media[], category: string, isTVShow = false) {
     const categorySlug = `${category.toLowerCase().replace(/ /g, "-")}${Math.random()}`; // Convert the category to a slug
@@ -357,8 +338,8 @@ export function Discover() {
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
           }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={() => toggleHover(true)}
+          onMouseLeave={() => toggleHover(false)}
           onWheel={(e) => handleWheel(e, categorySlug)}
         >
           {medias
