@@ -41,6 +41,7 @@ const editorPicks = [
   { id: 765245, type: "movie" }, // Swan Song
   { id: 264660, type: "movie" }, // Ex Machina
   { id: 86831, type: "tv" }, // Love, Death & Robots
+  { id: 92591, type: "movie"}, // Bernie
 ];
 
 export function Discover() {
